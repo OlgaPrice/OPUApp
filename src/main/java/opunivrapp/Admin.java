@@ -13,7 +13,7 @@ public class Admin extends Person {
     public Admin(String firsName, String lastName){
         super(firsName, lastName);
         this.id = id + adminID;
-        adminID++;
+        adminID ++;
     }
 
     public static void addAdmin(Admin admin){
@@ -117,12 +117,42 @@ public class Admin extends Person {
 
                 runRegistration();
             }
-
         }
     }
 
     private void runRegisterNewProfessor(){
+        System.out.println("Register New Professor");
+        Utils.printExitMessage();
 
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Enter first name: ");
+        String input = in.nextLine();
+        String firstName = input;
+
+        System.out.println("Enter last name: ");
+        input = in.nextLine();
+        String lastName = input;
+
+        System.out.println("Would you like to register professor to conduct courses?");
+        System.out.println("1 - yes");
+        System.out.println("2 - no");
+        System.out.println("Q - for exit");
+        input = in.nextLine();
+
+        switch (input){
+            case "Q", "q" -> {
+                System.out.println("Goodbye");
+                System.exit(0);
+            }
+            case "1" -> runCourseRegistration();
+            case "2" -> {
+                Professor professor = new Professor(firstName, lastName, new ArrayList<>());
+                professor.addProfessor(professor);
+
+                runRegistration();
+            }
+        }
     }
 
     private void runRegisterNewAdmin(){
