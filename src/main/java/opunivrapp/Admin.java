@@ -145,7 +145,7 @@ public class Admin extends Person {
                 System.out.println("Goodbye");
                 System.exit(0);
             }
-            case "1" -> runCourseRegistration();
+            case "1" -> runProfessorRegistration();
             case "2" -> {
                 Professor professor = new Professor(firstName, lastName, new ArrayList<>());
                 professor.addProfessor(professor);
@@ -156,7 +156,38 @@ public class Admin extends Person {
     }
 
     private void runRegisterNewAdmin(){
+        System.out.println("Register New Admin");
+        Utils.printExitMessage();
 
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Enter first name: ");
+        String input = in.nextLine();
+        String firstName = input;
+
+        System.out.println("Enter last name: ");
+        input = in.nextLine();
+        String lastName = input;
+
+        System.out.println("Would you like to register an admin to organize the educational process?");
+        System.out.println("1 - yes");
+        System.out.println("2 - no");
+        System.out.println("Q - for exit");
+        input = in.nextLine();
+
+        switch (input){
+            case "Q", "q" -> {
+                System.out.println("Goodbye");
+                System.exit(0);
+            }
+            case "1" -> runAdminRegistration();
+            case "2" -> {
+                Admin admin = new Admin(firstName, lastName);
+                admin.addAdmin(admin);
+
+                runRegistration();
+            }
+        }
     }
 
     private void runCourseRegistration(){
@@ -184,6 +215,37 @@ public class Admin extends Person {
             }
         }
         while (flag);
+    }
+
+    private void runProfessorRegistration(){
+        System.out.println("Register Professor to conduct the course.");
+        Utils.printExitMessage();
+
+        List<String> courses = new ArrayList<>();
+
+        Scanner in = new Scanner(System.in);
+        boolean flag = true;
+
+        do{
+            System.out.println("Enter course name OR 'Q' to quit: ");
+            String input = in.nextLine();
+            switch(input){
+                case "Q", "q" ->{
+                    Utils.printList(courses);
+                    flag = false;
+                    runRegistration();
+                }
+                default -> {
+                    courses.add(input);
+                    Utils.printList(courses);
+                }
+            }
+        }
+        while(flag);
+    }
+
+    private void runAdminRegistration(){
+        printAdmins();
     }
 }
 
