@@ -11,4 +11,8 @@ public class Academic extends Person{
         super(firstName, lastName);
         this.courses = courses;
     }
+
+    public List<String> getCourses(){
+        return  courses;
+    }
 }

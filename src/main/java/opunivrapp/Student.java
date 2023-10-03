@@ -17,4 +17,14 @@ public class Student extends Academic{
     public void addStudent(Student student) {
         students.add(student);
     }
+
+    public static void printStudent(){
+        for(Student student : students){
+            System.out.println(student.getFirsName());
+            System.out.println(student.getLastName());
+            System.out.println(student.getPassword());
+            System.out.println(student.getUserName());
+            System.out.println(student.id);
+        }
+    }
 }

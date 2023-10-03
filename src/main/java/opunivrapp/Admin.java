@@ -114,10 +114,20 @@ public class Admin extends Person {
             case "2" -> {
                 Student student = new Student(firstName, lastName, new ArrayList<>());
                 student.addStudent(student);
+                runPrintNewStudentInformation(student);
 
                 runRegistration();
             }
         }
+    }
+
+    private void runPrintNewStudentInformation(Student student){
+        if(student != null){
+            System.out.println("Student " + student.getFirsName() + student.getLastName() + " take courses: ");
+        }else{
+            System.out.println("Student information is not available.");
+        }
+
     }
 
     private void runRegisterNewProfessor(){

@@ -36,4 +36,8 @@ public abstract class Person {
     public String getPassword() {
         return password;
     }
+
+    public String getFullName() {
+        return firsName + " " + lastName;
+    }
 }
